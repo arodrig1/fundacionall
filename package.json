@@ -1,0 +1,9 @@
+{
+  "name": "fundacion-all",
+  "description": "Website for Fundacion ALL",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "*"
+  }
+}
