@@ -3,6 +3,12 @@
   "description": "Website for Fundacion ALL",
   "version": "0.0.1",
   "private": true,
+  "engines": {
+    "node": "0.10.29"
+  },
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
     "express": "*"
   }
