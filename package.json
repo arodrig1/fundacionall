@@ -10,6 +10,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "debug": "*",
     "express": "*"
   }
 }
