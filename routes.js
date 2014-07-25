@@ -1,5 +1,6 @@
 module.exports = function(app) {
-  app.get('/', function(req, res) {
-    res.send('Bajo construcción...');
-  });
+
+  var index = require('./routes/index');
+  app.get('/', index.home);
+
 }
