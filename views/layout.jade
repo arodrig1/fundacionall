@@ -1,8 +1,12 @@
 doctype html
 
 html
-  head
-    title= title
+  block head
+    - if (title)
+      title= __(title)
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='shortcut icon', href='/images/favicon.ico', type='image/x-icon')
+    link(rel='icon', href='/images/favicon.ico', type='image/x=icon')
 
     script(src='/javascript/fallback.min.js')
 
@@ -53,4 +57,47 @@ html
       });
 
   body
+
+    div.jumbotron
+      div.container
+        img(src='/images/logo1.png', style='fload: left; width: 41%; max-width: 400px;')
+        div(style='float: right; text-align: right;')
+          p #{__('Sevilla, Valle')}
+          p #{__('Colombia')}
+  
+    div.container
+      nav.navbar.navbar-inverse(role='navigation')
+        div.container-fluid
+          div.navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+              span.sr-only
+                Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/') #{__('Home')}
+
+          div.collapse.navbar-collapse#navbar-collapse
+            ul.nav.navbar-nav
+              li
+                a(href='/about')
+                  |#{__('¿Quiénes Somos?')}
+              li.dropdown
+                a.dropdown-toggle(href='/activities', data-toggle='dropdown')
+                  |#{__('Nuestras Actividades')}
+                  span.caret
+                ul.dropdown-menu(role='menu')
+                  li
+                    a(href='/activities') #{__('Actividades')}
+                  li
+                    a(href='/signup') #{__('Inscríbete')}
+                  li
+                    a(href='/calendar') #{__('Calendario')}
+              li
+                a(href='/sponsor')
+                  |#{__('Apoye Un Niño')}
+              li
+                a(href='/contact')
+                  |#{__('Contáctenos')}
+      
     block content

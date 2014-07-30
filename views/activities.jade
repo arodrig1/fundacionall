@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+  div.container
+
+    div.row
+      div.col-sm-8
+        div.panel-group#accordion
+          - var activities = [ 'Música', 'Actividades Manuales', 'Culinaria', 'Inglés', 'Lectura', 'Plastilina', 'Pintura', 'Fútbol', 'Natación', 'Películas'];
+          - for (var i = 0; i < activities.length; i++) {
+            div.panel.panel-default
+              a(data-toggle='collapse', data-parent='#accordion', href='#collapse' + i)
+                div.panel-heading
+                  h4.panel-title
+                    |#{__(activities[i])}
+              div.panel-collapse.collapse(id='collapse' + i)
+                div.panel-body
+                  |#{__('Descripción')}
+          - }
+      div.col-sm-4
+        a.btn.btn-lg.btn-block.btn-info(role='button', href='/signup')
+          |#{__('Inscríbete!')}
