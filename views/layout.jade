@@ -1,7 +1,7 @@
 doctype html
 
 html
-  block head
+  head
     - if (title)
       title= __(title)
     meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -55,6 +55,8 @@ html
         }
 
       });
+
+    block head
 
   body
 

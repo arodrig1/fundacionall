@@ -1,15 +1,40 @@
 extends layout
 
+block head
+
+  script.
+    fallback.load({
+      calendar_css: '/stylesheets/calendar.min.css'
+    });
+
 block content
 
   div.container
 
     div#calendar
 
+    script.
+      fallback.load({
+        '_': '/javascript/underscore-min.js',
 
+        calendar_es: '/javascript/language/es-MX.js',
 
+        '$.fn.calendar': [
+          '/javascript/calendar.min.js',
+          '/javascript/calendar.js'
+        ]
+      }, {
 
+          shim: {
+            '$.fn.calendar': ['jQuery']
+          }
 
+      });
 
-
-  script(src='/javascript/language/es-MX.js')
+      fallback.ready(['$.fn.calendar'], function() {
+        var calendar = $("#calendar").calendar({
+          tmpl_path: "/tmpls/",
+          events_source: function() { return []; },
+          language: 'es-MX'
+        });
+      });
