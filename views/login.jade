@@ -1,0 +1,20 @@
+extends layout
+
+block content
+
+  div.container
+    div.row
+      div.col-sm-12
+        h1 #{__('Manager Login')}
+
+        form(role='form', action='/login', method='post')
+          div.form-group
+            label(for='usernameInput')
+              = __('Usuario')
+            input.form-control#usernameInput(type='text', name='username', autofocus, required, placeholder=__('Ej. alulomolovi'))
+          div.form-group
+            label(for='passwordInput')
+              = __('Contraseña')
+            input.form-control#passwordInput(type='password', name='password', required, placeholder=__('Contraseña'))
+          button.btn.btn-default(type='submit')
+            = __('Entrar')

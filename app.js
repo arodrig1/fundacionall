@@ -2,17 +2,21 @@ var express = require('express');
 
 var app = express();
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var session = require('express-session');
 
 app.set('port', process.env.PORT || 3000);
 
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(express.static('./public'));
 app.use(session({
   secret: process.env.SECUREKEY_CRIMSON_KEY || 'keyboard dog',
-  cookie: { secure: true },
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: false
 }));
 
 require('./config/flash')(app);

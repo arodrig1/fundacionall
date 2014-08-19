@@ -12,15 +12,17 @@ var User = function() {
         hash: { type: String}
     });
 
+    var _model = mongoose.model('User', UserSchema);
+
     var _findById = function(id, callback) {
         _model.findById(id).exec(callback);
     }
 
-    var _findByUsername = function (userUsername, callback) {
-        _model.find({ username: userUsername }).exec(callback);
+    var _findByUsername = function (username, callback) {
+        _model.find({ username: username }).exec(callback);
     }
 
-    var _findOne = function(username, done, callback) {
+    var _findOne = function(username, callback) {
         _model.findOne({ username: username }).exec(callback);
     };
 
@@ -44,6 +46,7 @@ var User = function() {
     };
 
     var _validatePassword = function(username, password, done) {
+        console.log("User model validating password...");
         _model.findOne({'username' : username}, function(err, user){
             if(err) return done(err);
             if(!user) return done(null, false, { message : 'Incorrect username.' });
@@ -55,8 +58,6 @@ var User = function() {
             });
         });
     };
-
-    var _model = mongoose.model('User', UserSchema);
 
     return {
         schema: UserSchema,

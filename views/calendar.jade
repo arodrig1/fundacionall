@@ -13,11 +13,15 @@ block content
 
     div#calendar
 
+    if lang_file
+      script
+        | fallback.load({
+        = " calendar_lang: '/javascript/language/" + lang_file + "',"
+        | });
+
     script.
       fallback.load({
         '_': '/javascript/underscore-min.js',
-
-        calendar_es: '/javascript/language/es-MX.js',
 
         '$.fn.calendar': [
           '/javascript/calendar.min.js',
