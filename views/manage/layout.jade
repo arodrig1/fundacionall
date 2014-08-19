@@ -43,16 +43,22 @@ html
           '/javascript/bootstrap.min.js'
         ],
 
-        angular: [
+        'angular': [
           'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular.min.js',
           '/javascript/angular.min.js'
-        ]
+        ]/*,
+
+        'angular.module("ngRoute")': [
+          '//ajax.googleapis.com/ajax/libs/angularjs/1.2.20/angular-route.min.js',
+          '//code.angularjs.org/1.2.20/angular-route.min.js'
+        ]*/
 
       }, {
 
         shim: {
           'jQuery.ui': ['jQuery'],
-          '$.fn.modal': ['jQuery']
+          '$.fn.modal': ['jQuery'],
+          'angular.module("ngRoute")': ['angular']
         }
 
       });

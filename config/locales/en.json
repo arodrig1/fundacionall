@@ -48,5 +48,11 @@
 	"Entrar": "Entrar",
 	"is this shit working": "is this shit working",
 	"Missing credentials": "Missing credentials",
-	"Incorrect username.": "Incorrect username."
+	"Incorrect username.": "Incorrect username.",
+	"Delete": "Delete",
+	"Add": "Add",
+	"Búsqueda...": "Búsqueda...",
+	"Editar": "Editar",
+	"Eliminar": "Eliminar",
+	"Crear": "Crear"
 }

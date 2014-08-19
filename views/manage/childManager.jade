@@ -1,0 +1,48 @@
+extends layout
+
+block head
+
+  script.
+      fallback.load({
+        manager: '/javascript/childManager.js'
+      }, {
+
+          shim: {
+            manager: ['angular']
+          }
+
+      });
+
+block content
+
+  div.container(ng-controller='childController')
+
+    div.row
+      div.col-sm-4.col-sm-offset-4
+        input(type='text', ng-model='childFilter', placeholder=__('Búsqueda...'))
+    
+    div.row
+      div.col-sm-4.col-sm-offset-4
+        ul.list-group
+          li.list-group-item(ng-repeat='child in children | filter: childFilter')
+            h4
+              | {{ child.name.first + ' ' + child.name.last }}
+            p
+              | {{ child.idNum }}
+            button(ng-click='deleteChild(child._id)')
+              |#{__('Editar')}              
+            button(ng-click='deleteChild(child._id)')
+              |#{__('Eliminar')}
+            
+
+    div.row
+      div.col-sm-8.col-sm-offset-2(text-center)
+        form
+          div.form-group
+            input.form-control.input-md(placeholder='Alejandro', ng-model='formData.firstName')
+            input.form-control.input-md(placeholder='Rodriguez', ng-model='formData.lastName')
+            input.form-control.input-md(placeholder='CC, TI, RN', ng-model='formData.idNum')
+            input.form-control.input-md(placeholder='Photo URL', ng-model='formData.photoURL')
+
+          button.btn.btn-primary.btn-lg(type='submit', ng-click='createChild()')
+            |#{__('Crear')}

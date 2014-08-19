@@ -50,10 +50,15 @@ module.exports = function(app) {
 
   var events = require('./routes/events');
 
+*/
 
   var children = require('./routes/children');
+  app.get('/manage/children', children.manager);
+  app.get('/api/children', children.index);
+  app.post('/api/children', children.create);
+  app.delete('/api/children/:id', children.destroy);
 
-  GET /photos photos#index  display a list of all photos
+  /*GET /photos photos#index  display a list of all photos
 GET /photos/new photos#new  return an HTML form for creating a new photo
 POST  /photos photos#create create a new photo
 GET /photos/:id photos#show display a specific photo

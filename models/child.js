@@ -16,7 +16,11 @@ var Child = function() {
         return this.name.first + ' ' + this.name.last;
     });
 
-    var _model = mongoose.model('Child', Child);
+    var _model = mongoose.model('Child', ChildSchema);
+
+    var _findAll = function(callback) {
+        _model.find().exec(callback);
+    }
 
     var _findById = function(id, callback) {
         _model.findById(id).exec(callback);
@@ -26,23 +30,29 @@ var Child = function() {
         _model.findOne({ idNum: idNum }).exec(callback);
     }
 
-    var _create = function(firstName, lastName, idNum, photoURL, done){
+    var _create = function(info, done){
         _model.create({
-            'name' : { 'first' : firstName, 'last' : lastName },
-            'idNum' : idNum,
-            'photoURL' : photoURL
+            'name' : { 'first' : info.firstName, 'last' : info.lastName },
+            'idNum' : info.idNum,
+            'photoURL' : info.photoURL
         }, function(err, child) {
             if(err) { console.log(err); }
             done(null, child);
         });
     }
 
+    var _removeById = function(id, callback) {
+        _model.remove({ _id: id }, callback);
+    }
+
     return {
         schema: ChildSchema,
         model: _model,
+        findAll: _findAll,
         findById: _findById,
         findByNatlId: _findByNatlId,
-        create: _create
+        create: _create,
+        removeById: _removeById
     };
 
 }();

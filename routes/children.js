@@ -1,13 +1,13 @@
-var Activity = require('../models/activity.js');
+var Child = require('../models/child.js');
 
 var _manager = function(req, res) {
-  res.render('manage/activityManager');
+  res.render('manage/childManager');
 }
 
 var _index = function(req, res) {
-  Activity.findAll(function(err, activities) {
+  Child.findAll(function(err, children) {
     if (err) res.send(err);
-    res.json(activities);
+    res.json(children);
   });
 }
 
@@ -16,13 +16,17 @@ var _index = function(req, res) {
 }*/
 
 var _create = function(req, res) {
-  console.log("Activity create controller...");
-  Activity.create({
-    name: req.body.name,
+  Child.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    idNum: req.body.idNum,
     photoURL: req.body.photoURL
-  }, function(err, activity) {
+  }, function(err, child) {
     if (err) res.send(err);
-    res.redirect('/api/activities');
+    Child.findAll(function(err, children) {
+      if (err) res.send(err);
+      res.json(children);
+    });
   });
 }
 /*
@@ -39,11 +43,11 @@ var _update = function(req, res) {
 }*/
 
 var _destroy = function(req, res) {
-  Activity.removeById(req.params.id, function(err) {
+  Child.removeById(req.params.id, function(err) {
     if (err) res.send(err);
-    Activity.findAll(function(err, activities) {
+    Child.findAll(function(err, children) {
       if (err) res.send(err);
-      res.json(activities);
+      res.json(children);
     });
   });
 }

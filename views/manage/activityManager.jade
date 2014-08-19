@@ -15,23 +15,22 @@ block head
 
 block content
 
-  html(ng-app='activityManager')
+  div.container(ng-controller='mainController')
+    
+    div.row#activity-list
+      div.col-sm-4.col-sm-offset-4
+        ul.list-group
+          li.list-group-item(ng-repeat='activity in activities')
+            | {{activity.name}}
+            button(ng-click='deleteActivity(activity._id)')
+              |#{__('Delete')}
+            
 
-    body(ng-controller='mainController')
-      div.container
+    div.row#activity-form
+      div.col-sm-8.col-sm-offset-2(text-center)
+        form
+          div.form-group
+            input.form-control.input-md(placeholder='Pintura', ng-model='formData.name')
 
-        div.row#todo-list
-          div.col-sm-4.col-sm-offset-4
-            div.checkbox(ng-repeat='activity in activities')
-              label
-                input(type='checkbox', ng-click='deleteActivity(activity._id)')
-                | {{activity.name}}
-
-        div.row#activity-form
-          div.col-sm-8.col-sm-offset-2(text-center)
-            form
-              div.form-group
-                input.form-control.input-lg.text-center(placeholder='Pintura', ng-model='formData.name')
-
-              button.btn.btn-primary.btn-lg(type='submit', ng-click='createActivity()')
-                | Add
+          button.btn.btn-primary.btn-lg(type='submit', ng-click='createActivity()')
+            | Add

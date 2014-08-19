@@ -14,7 +14,6 @@ var Activity = function() {
     var _model = mongoose.model('Activity', ActivitySchema);
 
     var _findAll = function(callback) {
-        console.log("Activity model findAll invoked!");
         _model.find().exec(callback);
     }
 
@@ -31,8 +30,6 @@ var Activity = function() {
     };
 
     var _create = function(info, done){
-        console.log("Activity model create invoked!");
-        console.log(info);
         _model.create(info, function(err, activity) {
             if(err) { console.log(err); }
             done(null, activity);
