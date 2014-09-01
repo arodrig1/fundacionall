@@ -1,0 +1,22 @@
+nav.navbar(role='navigation')
+  div.container-fluid
+    div.navbar-header
+      button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+        span.sr-only
+          Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/manage') #{__('Administrador')}
+
+    div.collapse.navbar-collapse#navbar-collapse
+      ul.nav.navbar-nav
+        li
+          a(href='/about')
+            |#{__('¿Quiénes Somos?')}
+        li
+          a(href='/sponsor')
+            |#{__('Apoye Un Niño')}
+        li
+          a(href='/contact')
+            |#{__('Contáctenos')}

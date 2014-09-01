@@ -1,0 +1,74 @@
+extends layout
+
+block head
+
+  script.
+      fallback.load({
+        seriesManager: '/javascript/seriesManager.js'
+      }, {
+          shim: {
+            seriesManager: ['angular']
+          }
+      });
+
+block content
+
+  div.modal.fade#seriesCreateModal(tabindex='-1', role='dialog', aria-labelledby='seriesCreateModalLabel', aria-hidden='true')
+    div.modal-dialog
+      div.modal-content
+        div.modal-header
+          button.close(type='button', data-dismiss='modal')
+            span(aria-hidden='true')
+              &times;
+            span.sr-only
+              |#{__('Cerrar')}
+          h4.modal-title#seriesCreateModalLabel
+            |#{__('Crear Evento')}
+          div.modal-body
+            p Form for creating series
+          div.modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal')
+              |#{__('Cerrar')}
+
+  div.container
+    div.row
+      div.col-md-10.col-md-offset-1
+            
+        div(ng-controller='seriesController')
+          div.page-header
+            |#{__('Eventos Recientes')}
+          div.row
+            div.col-md-8.col-md-offset-2
+              table.table.table-bordered.table-hover
+                tr
+                  th
+                    |#{__('Nombre')}
+                  th
+                    |#{__('Inicio')}
+                  th
+                    |#{__('Fin')}
+                  th
+                    |#{__('Frecuencia')}
+                  th
+                    |#{__('Inscripciones')}
+                tr(ng-repeat='series in recentSeries')
+                  td
+                    | {{ series.name }}
+                  td
+                    | {{ series.startDate }}
+                  td
+                    | {{ series.endDate }}
+                  td
+                    | {{ seriesFreqString(series) }}
+                  td
+                    div.btn-group(data-toggle='buttons')
+                      label.btn.btn-success
+                        input(type='radio', ng-click='openSignups(series._id)')
+                        |#{__('Abiertas')}
+                      label.btn.btn-danger
+                        input(type='radio', ng-click='closeSignups(series._id)')
+                        |#{__('Cerradas')}
+          div.row
+            div.col-md-4.col-md-offset-4
+              button.btn.btn-primary.btn-lg.btn-block(data-toggle='modal', data-target='#seriesCreateModal')
+                |#{__('Crear Evento')}
