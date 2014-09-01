@@ -135,8 +135,34 @@ html
             |#{__(messages.info[i])}
         - }
     - }
-      
-    block content
+
+    div.container
+      div.row
+        div.col-md-10.col-md-offset-1
+          nav.navbar(role='navigation')
+            div.container-fluid
+              div.navbar-header
+                button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-collapse')
+                  span.sr-only
+                    Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href='/manage') #{__('Administrador')}
+
+              div.collapse.navbar-collapse#navbar-collapse
+                ul.nav.navbar-nav
+                  li
+                    a(href='/manage/events')
+                      |#{__('Eventos')}
+                  li
+                    a(href='/manage/activities')
+                      |#{__('Actividades')}
+                  li
+                    a(href='/manage/children')
+                      |#{__('Niños')}
+
+      block content
 
       script.
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

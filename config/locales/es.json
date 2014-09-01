@@ -20,5 +20,14 @@
 	"Entrar": "Entrar",
 	"Missing credentials": "Missing credentials",
 	"Incorrect username.": "Incorrect username.",
-	"Delete": "Delete"
+	"Delete": "Delete",
+	"Administrador": "Administrador",
+	"Eventos": "Eventos",
+	"Niños": "Niños",
+	"Eventos Recientes": "Eventos Recientes",
+	"Nombre": "Nombre",
+	"Fin": "Fin",
+	"Frecuencia": "Frecuencia",
+	"Inscripciones": "Inscripciones",
+	"Crear Evento": "Crear Evento"
 }

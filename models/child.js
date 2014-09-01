@@ -1,7 +1,7 @@
 var Child = function() {
-    var mongoose = require('mongoose'),
-        Schema = mongoose.Schema,
-        _ObjectId = mongoose.Types.ObjectId;
+    var mongoose = require('mongoose');
+    var Schema = mongoose.Schema;
+    var _ObjectId = Schema.Types.ObjectId;
     
     var ChildSchema = new Schema({
         name: {

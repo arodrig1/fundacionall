@@ -24,7 +24,7 @@ module.exports = function(app) {
   //app.all('/manage/*', ensureAuthenticated);
 
   app.get('/manage', function(req, res) {
-    res.redirect('/manage/activities');
+    res.render('manage/manager');
   });
 
 /*
@@ -43,6 +43,12 @@ module.exports = function(app) {
   //app.get('/manage/activities/:id/edit', activities.edit);
   //app.put('/manage/activities/:id', activities.update);
   app.delete('/api/activities/:id', activities.destroy);
+
+  var series = require('./routes/series');
+  app.get('/manage/series', series.manager);
+  app.get('/api/series', series.index);
+  //app.post('/api/series', series.create);
+  //app.delete('/api/children/:id', children.destroy);
 /*
   subactivities
 

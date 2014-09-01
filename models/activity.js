@@ -1,14 +1,14 @@
 var Activity = function() {
-    var mongoose = require('mongoose'),
-        Schema = mongoose.Schema,
-        _ObjectId = mongoose.Types.ObjectId;
+    var mongoose = require('mongoose');
+    var Schema = mongoose.Schema;
+    var _ObjectId = Schema.Types.ObjectId;
 
     var Subactivity = require('./subactivity.js');
     
     var ActivitySchema = new Schema({
         name: { type: String, required: true, unique: true },
         photoURL: { type: String },
-        subactivities: [{ type: _ObjectId, ref: 'Subactivity.schema' }]
+        subactivities: [{ type: _ObjectId, ref: 'Subactivity' }]
     });
 
     var _model = mongoose.model('Activity', ActivitySchema);

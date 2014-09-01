@@ -1,8 +1,10 @@
 var Event = function() {
-    var mongoose = require('mongoose'),
-        Schema = mongoose.Schema,
-        _ObjectId = mongoose.Types.ObjectId;
+    var mongoose = require('mongoose');
+    var Schema = mongoose.Schema;
+    var _ObjectId = Schema.Types.ObjectId;
 
+    var Activity = require('./activity.js');
+    var Subactivity = require('./subactivity.js');
     var Child = require('./child.js');
     
     var EventSchema = new Schema({
@@ -11,7 +13,13 @@ var Event = function() {
         startTime: { type: String },
         endTime: { type: String },
         photoURL: { type: String },
-        children: [{ type: _ObjectId, ref: 'Child.schema' }]
+        activities: [{ type: _ObjectId, ref: 'Activity' }],
+        subactivities: [{ type: _ObjectId, ref: 'Subactivity' }],
+        children: [{ 
+                        child: { type: _ObjectId, ref: 'Child' },
+                        attendance: { type: Boolean }
+                    }],
+        signupsOpen: { type: Boolean, default: false }
     });
 
     var _model = mongoose.model('Event', EventSchema);

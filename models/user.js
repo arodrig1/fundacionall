@@ -2,9 +2,9 @@ var hash = require('../hash');
 var Crypto = require('crypto');
 
 var User = function() {
-    var mongoose = require('mongoose'),
-        Schema = mongoose.Schema,
-        _ObjectId = mongoose.Types.ObjectId;
+    var mongoose = require('mongoose');
+    var Schema = mongoose.Schema;
+    var _ObjectId = Schema.Types.ObjectId;
     
     var UserSchema = new Schema({
         username: { type: String, required: true, unique: true },
